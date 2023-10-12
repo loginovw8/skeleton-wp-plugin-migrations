@@ -13,10 +13,14 @@ return new class
 
 		$charset_collate = $wpdb->get_charset_collate();
 
-		$sql = "CREATE TABLE IF NOT EXISTS theme_logs (
+		$sql = "CREATE TABLE IF NOT EXISTS theme_jobs (
 			id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-			message TEXT NOT NULL,
-			created_at TIMESTAMP NOT NULL
+			name VARCHAR(255) NOT NULL,
+			params TEXT NULL DEFAULT NULL,
+			attempts INT DEFAULT 0,
+			created_at TIMESTAMP NOT NULL,
+			updated_at TIMESTAMP NOT NULL,
+			finished_at TIMESTAMP NULL DEFAULT NULL
 		) $charset_collate;";
 
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
@@ -33,7 +37,7 @@ return new class
 	{
 		global $wpdb;
 
-		$sql = "DROP TABLE theme_logs";
+		$sql = "DROP TABLE theme_jobs";
 
 		$wpdb->query($sql);
 	}

@@ -17,26 +17,26 @@
 
 function install()
 {
-	$migrations = scandir(WP_PLUGIN_DIR . "/migrations/database");
+	$migrations = scandir(WP_PLUGIN_DIR . "/skeleton-wp-plugin-migrations/database");
 
 	sort($migrations);
 
 	foreach ($migrations as $migration) {
 		if ($migration != "." && $migration != "..") {
-			(require WP_PLUGIN_DIR . '/migrations/database/' . $migration)->up();
+			(require WP_PLUGIN_DIR . '/skeleton-wp-plugin-migrations/database/' . $migration)->up();
 		}
 	}
 }
 
 function uninstall()
 {
-	$migrations = scandir(WP_PLUGIN_DIR . "/migrations/database");
+	$migrations = scandir(WP_PLUGIN_DIR . "/skeleton-wp-plugin-migrations/database");
 
 	rsort($migrations);
 
 	foreach ($migrations as $migration) {
 		if ($migration != "." && $migration != "..") {
-			(require WP_PLUGIN_DIR . '/migrations/database/' . $migration)->down();
+			(require WP_PLUGIN_DIR . '/skeleton-wp-plugin-migrations/database/' . $migration)->down();
 		}
 	}
 }

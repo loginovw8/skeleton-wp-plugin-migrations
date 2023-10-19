@@ -17,6 +17,7 @@ return new class
 			id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 			name VARCHAR(255) NOT NULL,
 			params TEXT NULL DEFAULT NULL,
+			status VARCHAR(255) NULL DEFAULT NULL,
 			attempts INT DEFAULT 0,
 			created_at TIMESTAMP NOT NULL,
 			updated_at TIMESTAMP NOT NULL,

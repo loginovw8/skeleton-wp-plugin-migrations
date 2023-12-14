@@ -16,6 +16,7 @@ return new class
 		$sql = "CREATE TABLE IF NOT EXISTS theme_regions (
 			id VARCHAR(255) NOT NULL PRIMARY KEY,
 			name TEXT NOT NULL,
+			active BOOLEAN,
 			created_at TIMESTAMP NOT NULL
 		) $charset_collate;";
 
